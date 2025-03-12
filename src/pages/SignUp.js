@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSignUpEmailPassword } from '@nhost/react';
-import { Navigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [displayName, setDisplayName] = useState('');
