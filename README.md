@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# News Digest App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A personalized news aggregation platform built with React, GraphQL, and Nhost. The News Digest App delivers curated articles based on user preferences, with AI-powered summaries and sentiment analysis.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Personalized News Feed**: Articles filtered based on user preferences
+- **Topic Preferences**: Select topics of interest and customize keywords
+- **AI-Powered Summaries**: Concise article summaries for quick reading
+- **Sentiment Analysis**: Visual indication of article sentiment (positive, negative, neutral)
+- **User Interactions**: Save articles and track reading history
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Clean UI**: Modern, minimalist interface for an optimal reading experience
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, Apollo Client, CSS3
+- **Backend**: GraphQL API, Hasura, PostgreSQL
+- **Authentication**: Nhost Auth
+- **AI Processing**: OpenRouter API, Claude 3.7
+- **News Source**: NewsAPI
+- **Deployment**: Netlify (frontend), Nhost (backend)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v14+)
+- npm or yarn
+- Git
+- Nhost account
+- NewsAPI key
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/yourusername/news-digest-app.git
+cd news-digest-app
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies**
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Set up environment variables**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a `.env.local` file in the root directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+REACT_APP_NHOST_SUBDOMAIN=your_nhost_subdomain
+REACT_APP_NHOST_REGION=your_nhost_region
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Start the development server**
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The app will be available at [http://localhost:3000](http://localhost:3000)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Backend Setup
 
-### Code Splitting
+### Database Schema
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app requires the following tables in your PostgreSQL database:
 
-### Analyzing the Bundle Size
+- `users`: User accounts and profiles
+- `user_preferences`: User topic preferences and keywords
+- `news_articles`: Source news articles
+- `processed_articles`: AI-processed summaries and sentiment analysis
+- `user_article_interactions`: Track read and saved articles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### News Processing Workflow
 
-### Making a Progressive Web App
+The news aggregation process involves:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Fetching articles from NewsAPI
+2. Processing with AI for summaries and sentiment analysis
+3. Storing in the database
+4. Serving personalized content to users
 
-### Advanced Configuration
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Frontend Deployment (Netlify)
 
-### Deployment
+1. Fork or clone this repository
+2. Connect your GitHub repo to Netlify
+3. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `build`
+4. Add environment variables in Netlify dashboard
+5. Deploy!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Environment Variables
 
-### `npm run build` fails to minify
+Make sure to set these in your deployment environment:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+REACT_APP_NHOST_SUBDOMAIN=ktnqyxenwhwxuvsebdvr
+REACT_APP_NHOST_REGION=ap-south-1
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Nhost](https://nhost.io/) for authentication and hosting
+- [NewsAPI](https://newsapi.org/) for news sources
+- [OpenRouter](https://openrouter.ai/) for AI processing
+- [Claude](https://www.anthropic.com/claude) for AI summaries and sentiment analysis
+- [React](https://reactjs.org/) and [Apollo](https://www.apollographql.com/) teams for incredible tools
+- All open source libraries used in this project
+
+## Contact
+
+Your Name - [@yourusername](https://twitter.com/yourusername) - email@example.com
+
+Project Link: [https://github.com/yourusername/news-digest-app](https://github.com/yourusername/news-digest-app)
+
+---
+
+© 2023 News Digest App. All Rights Reserved.
+
+Similar code found with 2 license types
